@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aroma Café - Artisan Coffee & Pastries</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#D4A574',secondary:'#2C1810'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FFF8F3;
+            color: #2C1810;
+        }
+        h1, h2, h3, h4, h5, h6, .nav-link {
+            font-family: 'Poppins', sans-serif;
+        }
+        .logo {
+            font-family: 'Pacifico', serif;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-checkbox {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fff;
+            border: 2px solid #D4A574;
+            border-radius: 4px;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            content: "";
+            position: absolute;
+            display: block;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid #D4A574;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #D4A574;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .menu-tab.active {
+            color: #D4A574;
+            border-bottom: 2px solid #D4A574;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="w-1/4">
+                <a href="#" class="logo text-3xl text-primary">logo</a>
+            </div>
+            <nav class="hidden md:flex items-center justify-center w-2/4">
+                <ul class="flex space-x-8">
+                    <li><a href="#" class="nav-link font-medium text-secondary hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="#menu" class="nav-link font-medium text-secondary hover:text-primary transition-colors">Menu</a></li>
+                    <li><a href="#about" class="nav-link font-medium text-secondary hover:text-primary transition-colors">About</a></li>
+                    <li><a href="#order" class="nav-link font-medium text-secondary hover:text-primary transition-colors">Order Online</a></li>
+                </ul>
+            </nav>
+            <div class="w-1/4 flex justify-end">
+                <button class="flex items-center justify-center bg-primary text-white px-4 py-2 rounded-button whitespace-nowrap">
+                    <span class="w-5 h-5 flex items-center justify-center mr-2"><i class="ri-shopping-bag-line"></i></span>
+                    Order Now
+                </button>
+                <button class="ml-4 md:hidden w-10 h-10 flex items-center justify-center text-secondary">
+                    <i class="ri-menu-line ri-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="pt-20 relative overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=A%20warm%20and%20inviting%20cafe%20interior%20with%20soft%20natural%20lighting%20streaming%20through%20large%20windows%2C%20highlighting%20wooden%20tables%20and%20comfortable%20seating.%20The%20space%20features%20a%20modern%20minimalist%20design%20with%20warm%20wood%20tones%2C%20hanging%20plants%2C%20and%20a%20coffee%20bar%20with%20baristas%20preparing%20artisanal%20drinks.%20The%20atmosphere%20is%20cozy%20yet%20sophisticated%2C%20with%20subtle%20details%20like%20coffee%20bean%20bags%20and%20pastry%20displays%20visible%20in%20the%20background.%20The%20left%20side%20of%20the%20image%20has%20a%20gradient%20fade%20to%20a%20soft%20warm%20beige%20color%20to%20allow%20text%20overlay.&width=1920&height=800&seq=cafe1&orientation=landscape'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#FFF8F3] via-[#FFF8F3]/90 to-transparent"></div>
+        <div class="container mx-auto px-4 py-20 relative z-10">
+            <div class="max-w-xl">
+                <h1 class="text-5xl font-bold mb-4 text-secondary leading-tight">Artisan Coffee & Handcrafted Moments</h1>
+                <p class="text-lg mb-8 text-secondary/80">Experience the perfect blend of premium coffee, delicious pastries, and a warm atmosphere designed to make every visit special.</p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">
+                        Order Online
+                    </button>
+                    <button class="border-2 border-secondary text-secondary px-6 py-3 rounded-button font-medium hover:bg-secondary/5 transition-colors whitespace-nowrap">
+                        View Our Menu
+                    </button>
+                </div>
+                <div class="mt-10 flex items-center space-x-4">
+                    <div class="flex -space-x-2">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20woman%20with%20brown%20hair%20smiling%20naturally%20at%20the%20camera%2C%20warm%20lighting%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=person1&orientation=squarish" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20man%20with%20glasses%20smiling%20naturally%20at%20the%20camera%2C%20warm%20lighting%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=person2&orientation=squarish" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20woman%20with%20blonde%20hair%20smiling%20naturally%20at%20the%20camera%2C%20warm%20lighting%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=person3&orientation=squarish" alt="Customer" class="w-10 h-10 rounded-full border-2 border-white">
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <div class="flex">
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-fill text-yellow-400"></i>
+                                <i class="ri-star-half-fill text-yellow-400"></i>
+                            </div>
+                            <span class="ml-2 text-secondary/80">4.8/5 (350+ reviews)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Features Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center text-center p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+                        <i class="ri-cup-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Specialty Coffee</h3>
+                    <p class="text-secondary/70">Ethically sourced beans, expertly roasted in-house for the perfect cup every time.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+                        <i class="ri-cake-3-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Fresh Pastries</h3>
+                    <p class="text-secondary/70">Handcrafted daily using traditional recipes and the finest ingredients.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+                        <i class="ri-home-wifi-line ri-xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Cozy Atmosphere</h3>
+                    <p class="text-secondary/70">A warm, inviting space designed for work, conversation, or peaceful relaxation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-16 bg-[#FFF8F3]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Our Menu</h2>
+                <p class="text-secondary/70 max-w-2xl mx-auto">Discover our selection of handcrafted beverages and freshly baked goods, made with love and the finest ingredients.</p>
+            </div>
+
+            <div class="flex justify-center mb-8 border-b border-gray-200">
+                <button class="menu-tab active px-6 py-3 font-medium text-lg" data-category="all">All</button>
+                <button class="menu-tab px-6 py-3 font-medium text-lg" data-category="coffee">Coffee</button>
+                <button class="menu-tab px-6 py-3 font-medium text-lg" data-category="pastries">Pastries</button>
+                <button class="menu-tab px-6 py-3 font-medium text-lg" data-category="breakfast">Breakfast</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Coffee Items -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img src="https://readdy.ai/api/search-image?query=A%20perfectly%20crafted%20cappuccino%20in%20a%20white%20ceramic%20cup%20on%20a%20wooden%20table%2C%20with%20beautiful%20latte%20art%20on%20top.%20The%20coffee%20has%20a%20rich%2C%20velvety%20texture%20with%20a%20perfect%20crema.%20The%20background%20is%20softly%20blurred%2C%20showing%20a%20warm%20cafe%20environment%20with%20soft%20natural%20lighting.%20Professional%20food%20photography%20with%20shallow%20depth%20of%20field.&width=600&height=400&seq=coffee1&orientation=landscape" alt="Cappuccino" class="w-full h-60 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Cappuccino</h3>
+                            <span class="text-primary font-medium">$4.50</span>
+                        </div>
+                        <p class="text-secondary/70 mb-4">Espresso with steamed milk and a thick layer of foam, perfectly balanced and velvety smooth.</p>
+                        <button class="w-full bg-primary/10 text-primary font-medium py-2 rounded-button hover:bg-primary/20 transition-colors whitespace-nowrap">Add to Order</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img src="https://readdy.ai/api/search-image?query=A%20beautiful%20flat%20white%20coffee%20in%20a%20white%20ceramic%20cup%20on%20a%20wooden%20table.%20The%20coffee%20has%20perfect%20microfoam%20milk%20with%20subtle%20latte%20art%20on%20top.%20The%20background%20is%20softly%20blurred%2C%20showing%20a%20warm%20cafe%20environment%20with%20soft%20natural%20lighting.%20Professional%20food%20photography%20with%20shallow%20depth%20of%20field.&width=600&height=400&seq=coffee2&orientation=landscape" alt="Flat White" class="w-full h-60 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Flat White</h3>
+                            <span class="text-primary font-medium">$4.75</span>
+                        </div>
+                        <p class="text-secondary/70 mb-4">Double espresso with velvety steamed milk, creating a rich and smooth coffee experience.</p>
+                        <button class="w-full bg-primary/10 text-primary font-medium py-2 rounded-button hover:bg-primary/20 transition-colors whitespace-nowrap">Add to Order</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img src="https://readdy.ai/api/search-image?query=A%20freshly%20baked%20croissant%20on%20a%20wooden%20serving%20board%20with%20a%20small%20dish%20of%20butter%20and%20jam%20nearby.%20The%20croissant%20has%20a%20golden-brown%2C%20flaky%20exterior%20with%20visible%20layers.%20The%20background%20is%20softly%20blurred%2C%20showing%20a%20warm%20cafe%20environment%20with%20soft%20natural%20lighting.%20Professional%20food%20photography%20with%20shallow%20depth%20of%20field.&width=600&height=400&seq=pastry1&orientation=landscape" alt="Butter Croissant" class="w-full h-60 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Butter Croissant</h3>
+                            <span class="text-primary font-medium">$3.75</span>
+                        </div>
+                        <p class="text-secondary/70 mb-4">Flaky, buttery layers baked to golden perfection. Served warm with a side of jam.</p>
+                        <button class="w-full bg-primary/10 text-primary font-medium py-2 rounded-button hover:bg-primary/20 transition-colors whitespace-nowrap">Add to Order</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img src="https://readdy.ai/api/search-image?query=A%20beautifully%20presented%20avocado%20toast%20on%20artisanal%20sourdough%20bread.%20The%20toast%20is%20topped%20with%20perfectly%20sliced%20avocado%2C%20cherry%20tomatoes%2C%20microgreens%2C%20and%20a%20sprinkle%20of%20sesame%20seeds.%20A%20poached%20egg%20sits%20on%20top%20with%20the%20yolk%20just%20beginning%20to%20run.%20The%20dish%20is%20on%20a%20ceramic%20plate%20on%20a%20wooden%20table.%20Professional%20food%20photography%20with%20shallow%20depth%20of%20field.&width=600&height=400&seq=breakfast1&orientation=landscape" alt="Avocado Toast" class="w-full h-60 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Avocado Toast</h3>
+                            <span class="text-primary font-medium">$9.50</span>
+                        </div>
+                        <p class="text-secondary/70 mb-4">Sourdough toast topped with smashed avocado, poached egg, cherry tomatoes, and microgreens.</p>
+                        <button class="w-full bg-primary/10 text-primary font-medium py-2 rounded-button hover:bg-primary/20 transition-colors whitespace-nowrap">Add to Order</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img src="https://readdy.ai/api/search-image?query=A%20beautiful%20iced%20latte%20in%20a%20tall%20glass%20with%20ice%20cubes%2C%20showing%20layers%20of%20espresso%20and%20milk.%20The%20glass%20has%20condensation%20on%20the%20outside%2C%20suggesting%20coolness.%20A%20metal%20straw%20is%20inserted%20in%20the%20glass.%20The%20background%20is%20softly%20blurred%2C%20showing%20a%20warm%20cafe%20environment%20with%20soft%20natural%20lighting.%20Professional%20food%20photography%20with%20shallow%20depth%20of%20field.&width=600&height=400&seq=coffee3&orientation=landscape" alt="Iced Latte" class="w-full h-60 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Iced Latte</h3>
+                            <span class="text-primary font-medium">$5.25</span>
+                        </div>
+                        <p class="text-secondary/70 mb-4">Chilled espresso poured over ice and topped with cold milk. Refreshing and smooth.</p>
+                        <button class="w-full bg-primary/10 text-primary font-medium py-2 rounded-button hover:bg-primary/20 transition-colors whitespace-nowrap">Add to Order</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <img src="https://readdy.ai/api/search-image?query=A%20slice%20of%20blueberry%20cheesecake%20on%20a%20white%20plate%20with%20fresh%20blueberries%20scattered%20around.%20The%20cheesecake%20has%20a%20perfect%20creamy%20texture%20with%20a%20golden%20graham%20cracker%20crust%20and%20a%20swirl%20of%20blueberry%20compote%20on%20top.%20The%20background%20is%20softly%20blurred%2C%20showing%20a%20warm%20cafe%20environment%20with%20soft%20natural%20lighting.%20Professional%20food%20photography%20with%20shallow%20depth%20of%20field.&width=600&height=400&seq=dessert1&orientation=landscape" alt="Blueberry Cheesecake" class="w-full h-60 object-cover object-top">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Blueberry Cheesecake</h3>
+                            <span class="text-primary font-medium">$6.50</span>
+                        </div>
+                        <p class="text-secondary/70 mb-4">Creamy cheesecake with a graham cracker crust, topped with house-made blueberry compote.</p>
+                        <button class="w-full bg-primary/10 text-primary font-medium py-2 rounded-button hover:bg-primary/20 transition-colors whitespace-nowrap">Add to Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <button class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">View Full Menu</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cafe Atmosphere Gallery -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Our Café</h2>
+                <p class="text-secondary/70 max-w-2xl mx-auto">Step into our warm, inviting space designed for comfort and connection. Every corner of our café is crafted to enhance your experience.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="col-span-2 row-span-2">
+                    <img src="https://readdy.ai/api/search-image?query=A%20wide%20angle%20view%20of%20a%20modern%20cafe%20interior%20with%20warm%20lighting%2C%20wooden%20tables%2C%20comfortable%20seating%2C%20and%20large%20windows%20letting%20in%20natural%20light.%20The%20space%20has%20a%20cozy%20yet%20sophisticated%20atmosphere%20with%20plants%2C%20bookshelves%2C%20and%20a%20visible%20coffee%20bar%20where%20baristas%20are%20working.%20The%20cafe%20is%20moderately%20filled%20with%20customers%20enjoying%20coffee%20and%20conversation.%20Professional%20interior%20photography%20with%20excellent%20composition.&width=800&height=800&seq=cafe2&orientation=squarish" alt="Cafe Interior" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <div>
+                    <img src="https://readdy.ai/api/search-image?query=A%20close-up%20view%20of%20a%20baristas%20hands%20preparing%20coffee%20using%20a%20professional%20espresso%20machine.%20Steam%20is%20rising%20from%20the%20portafilter%20as%20coffee%20is%20being%20extracted%20into%20a%20small%20cup.%20The%20image%20shows%20the%20craftsmanship%20and%20attention%20to%20detail%20in%20coffee%20preparation.%20Professional%20photography%20with%20shallow%20depth%20of%20field%20focusing%20on%20the%20hands%20and%20coffee.&width=400&height=400&seq=barista1&orientation=squarish" alt="Coffee Preparation" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <div>
+                    <img src="https://readdy.ai/api/search-image?query=A%20close-up%20of%20freshly%20baked%20pastries%20displayed%20in%20a%20cafe%20bakery%20case.%20The%20pastries%20include%20croissants%2C%20pain%20au%20chocolat%2C%20and%20fruit%20danishes%20with%20a%20golden-brown%20finish.%20The%20display%20looks%20appetizing%20and%20professionally%20arranged.%20Professional%20food%20photography%20with%20shallow%20depth%20of%20field.&width=400&height=400&seq=pastries1&orientation=squarish" alt="Fresh Pastries" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <div>
+                    <img src="https://readdy.ai/api/search-image?query=A%20cozy%20corner%20of%20a%20cafe%20with%20a%20comfortable%20armchair%2C%20small%20wooden%20table%20with%20a%20cup%20of%20coffee%20and%20an%20open%20book.%20A%20reading%20lamp%20casts%20warm%20light%2C%20and%20theres%20a%20small%20bookshelf%20nearby.%20The%20space%20looks%20inviting%20and%20peaceful.%20Professional%20interior%20photography%20with%20warm%20lighting.&width=400&height=400&seq=corner1&orientation=squarish" alt="Reading Corner" class="w-full h-full object-cover rounded-lg">
+                </div>
+                <div>
+                    <img src="https://readdy.ai/api/search-image?query=A%20close-up%20of%20a%20barista%20creating%20latte%20art%20on%20a%20cappuccino.%20The%20image%20shows%20the%20precise%20pouring%20technique%20as%20milk%20is%20being%20added%20to%20create%20a%20beautiful%20design%20on%20the%20coffees%20surface.%20Professional%20food%20photography%20with%20shallow%20depth%20of%20field%20focusing%20on%20the%20cup%20and%20the%20baristas%20hand.&width=400&height=400&seq=latteart1&orientation=squarish" alt="Latte Art" class="w-full h-full object-cover rounded-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Ordering Section -->
+    <section id="order" class="py-16 bg-[#FFF8F3]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">Order Online</h2>
+                <p class="text-secondary/70 max-w-2xl mx-auto">Skip the line and order ahead for pickup or delivery. Your favorite coffee and treats are just a few clicks away.</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Menu Categories -->
+                    <div class="md:w-1/4 bg-gray-50 p-4">
+                        <h3 class="font-semibold text-lg mb-4">Categories</h3>
+                        <ul class="space-y-2">
+                            <li class="bg-primary/10 text-primary rounded p-2 font-medium">Coffee & Espresso</li>
+                            <li class="hover:bg-gray-100 rounded p-2 transition-colors">Cold Drinks</li>
+                            <li class="hover:bg-gray-100 rounded p-2 transition-colors">Pastries</li>
+                            <li class="hover:bg-gray-100 rounded p-2 transition-colors">Breakfast</li>
+                            <li class="hover:bg-gray-100 rounded p-2 transition-colors">Lunch</li>
+                            <li class="hover:bg-gray-100 rounded p-2 transition-colors">Desserts</li>
+                        </ul>
+                        <div class="mt-8">
+                            <h3 class="font-semibold text-lg mb-4">Order Type</h3>
+                            <div class="flex items-center justify-between mb-4">
+                                <span>Pickup</span>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="orderTypeToggle">
+                                    <span class="slider"></span>
+                                </label>
+                                <span>Delivery</span>
+                            </div>
+                           
+                            <div id="pickupTimeContainer" class="mb-4">
+                                <label class="block text-sm font-medium mb-1">Pickup Time</label>
+                                <select class="w-full p-2 border border-gray-300 rounded text-sm pr-8">
+                                    <option>As soon as possible</option>
+                                    <option>In 15 minutes</option>
+                                    <option>In 30 minutes</option>
+                                    <option>In 45 minutes</option>
+                                    <option>In 1 hour</option>
+                                </select>
+                            </div>
+                           
+                            <div id="deliveryAddressContainer" class="hidden mb-4">
+                                <label class="block text-sm font-medium mb-1">Delivery Address</label>
+                                <input type="text" placeholder="Enter your address" class="w-full p-2 border border-gray-300 rounded text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Menu Items -->
+                    <div class="md:w-2/4 p-6 border-r border-l border-gray-100">
+                        <h3 class="font-semibold text-xl mb-6">Coffee & Espresso</h3>
+                       
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-start pb-4 border-b border-gray-100">
+                                <div>
+                                    <h4 class="font-medium text-lg">Espresso</h4>
+                                    <p class="text-sm text-secondary/70">Double shot of our signature espresso blend</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-medium mr-4">$3.50</span>
+                                    <button class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors whitespace-nowrap">
+                                        <i class="ri-add-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                           
+                            <div class="flex justify-between items-start pb-4 border-b border-gray-100">
+                                <div>
+                                    <h4 class="font-medium text-lg">Americano</h4>
+                                    <p class="text-sm text-secondary/70">Espresso with hot water</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-medium mr-4">$4.00</span>
+                                    <button class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors whitespace-nowrap">
+                                        <i class="ri-add-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                           
+                            <div class="flex justify-between items-start pb-4 border-b border-gray-100">
+                                <div>
+                                    <h4 class="font-medium text-lg">Cappuccino</h4>
+                                    <p class="text-sm text-secondary/70">Espresso with steamed milk and foam</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-medium mr-4">$4.50</span>
+                                    <button class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors whitespace-nowrap">
+                                        <i class="ri-add-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                           
+                            <div class="flex justify-between items-start pb-4 border-b border-gray-100">
+                                <div>
+                                    <h4 class="font-medium text-lg">Latte</h4>
+                                    <p class="text-sm text-secondary/70">Espresso with steamed milk</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-medium mr-4">$4.75</span>
+                                    <button class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors whitespace-nowrap">
+                                        <i class="ri-add-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                           
+                            <div class="flex justify-between items-start pb-4 border-b border-gray-100">
+                                <div>
+                                    <h4 class="font-medium text-lg">Mocha</h4>
+                                    <p class="text-sm text-secondary/70">Espresso with chocolate and steamed milk</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-medium mr-4">$5.25</span>
+                                    <button class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors whitespace-nowrap">
+                                        <i class="ri-add-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                           
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium text-lg">Flat White</h4>
+                                    <p class="text-sm text-secondary/70">Double espresso with velvety steamed milk</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-medium mr-4">$4.75</span>
+                                    <button class="w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors whitespace-nowrap">
+                                        <i class="ri-add-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cart -->
+                    <div class="md:w-1/4 p-6 bg-gray-50">
+                        <h3 class="font-semibold text-lg mb-4">Your Order</h3>
+                       
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium">Cappuccino</h4>
+                                    <p class="text-xs text-secondary/70">Regular, No sugar</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="flex items-center mr-2">
+                                        <button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-secondary whitespace-nowrap">
+                                            <i class="ri-subtract-line"></i>
+                                        </button>
+                                        <span class="mx-2 text-sm">1</span>
+                                        <button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-secondary whitespace-nowrap">
+                                            <i class="ri-add-line"></i>
+                                        </button>
+                                    </div>
+                                    <span class="font-medium text-sm">$4.50</span>
+                                </div>
+                            </div>
+                           
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-medium">Butter Croissant</h4>
+                                    <p class="text-xs text-secondary/70">Warmed</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="flex items-center mr-2">
+                                        <button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-secondary whitespace-nowrap">
+                                            <i class="ri-subtract-line"></i>
+                                        </button>
+                                        <span class="mx-2 text-sm">1</span>
+                                        <button class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded-full text-secondary whitespace-nowrap">
+                                            <i class="ri-add-line"></i>
+                                        </button>
+                                    </div>
+                                    <span class="font-medium text-sm">$3.75</span>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="border-t border-gray-200 pt-4 mb-6">
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Subtotal</span>
+                                <span class="font-medium">$8.25</span>
+                            </div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Tax</span>
+                                <span class="font-medium">$0.83</span>
+                            </div>
+                            <div class="flex justify-between font-semibold">
+                                <span>Total</span>
+                                <span>$9.08</span>
+                            </div>
+                        </div>
+                       
+                        <button class="w-full bg-primary text-white py-3 rounded-button font-medium hover:bg-primary/90 transition-colors mb-4 whitespace-nowrap">
+                            Proceed to Checkout
+                        </button>
+                       
+                        <div class="text-center text-sm text-secondary/70">
+                            <p>Estimated pickup time: 15 minutes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://readdy.ai/api/search-image?query=A%20warm%20and%20inviting%20cafe%20scene%20showing%20a%20diverse%20team%20of%20baristas%20and%20staff%20working%20together%20behind%20a%20counter.%20They%20are%20smiling%20and%20preparing%20coffee%20with%20professional%20equipment.%20The%20cafe%20has%20a%20modern%20yet%20cozy%20atmosphere%20with%20wooden%20elements%20and%20warm%20lighting.%20The%20image%20conveys%20teamwork%2C%20craftsmanship%2C%20and%20a%20welcoming%20environment.%20Professional%20photography%20with%20excellent%20composition%20and%20lighting.&width=800&height=600&seq=team1&orientation=landscape" alt="Our Team" class="w-full h-auto rounded-lg shadow-md">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-4xl font-bold mb-6">Our Story</h2>
+                    <p class="text-secondary/80 mb-4">Founded in 2018, Aroma Café began with a simple mission: to create a space where quality coffee, delicious food, and genuine community could thrive together.</p>
+                    <p class="text-secondary/80 mb-4">Our founder, Emily Chen, spent years traveling the world and learning from master roasters and bakers before bringing her passion back home. What started as a small corner shop has grown into a beloved neighborhood destination.</p>
+                    <p class="text-secondary/80 mb-6">We source our beans ethically from small-scale farmers around the world, roast them in small batches to ensure freshness, and train our baristas in the art and science of coffee preparation.</p>
+                   
+                    <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                        <div class="flex flex-col items-center sm:items-start">
+                            <div class="text-3xl font-bold text-primary mb-2">15,000+</div>
+                            <div class="text-secondary/70">Happy Customers</div>
+                        </div>
+                        <div class="flex flex-col items-center sm:items-start">
+                            <div class="text-3xl font-bold text-primary mb-2">12</div>
+                            <div class="text-secondary/70">Coffee Origins</div>
+                        </div>
+                        <div class="flex flex-col items-center sm:items-start">
+                            <div class="text-3xl font-bold text-primary mb-2">5</div>
+                            <div class="text-secondary/70">Years of Service</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials -->
+    <section class="py-16 bg-[#FFF8F3]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold mb-4">What Our Customers Say</h2>
+                <p class="text-secondary/70 max-w-2xl mx-auto">Don't just take our word for it. Here's what our regular customers have to say about their Aroma Café experience.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20woman%20with%20brown%20hair%20and%20glasses%2C%20smiling%20naturally%20at%20the%20camera%2C%20warm%20lighting%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=person4&orientation=squarish" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-medium">Rebecca Thompson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-secondary/80">"The atmosphere here is perfect for both working and relaxing. Their cappuccino is consistently excellent, and the staff remembers my order. It's become my second home!"</p>
+                </div>
+               
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20middle-aged%20man%20with%20salt%20and%20pepper%20hair%20and%20a%20short%20beard%2C%20smiling%20naturally%20at%20the%20camera%2C%20warm%20lighting%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=person5&orientation=squarish" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-medium">Michael Rodriguez</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-secondary/80">"I've tried many cafes in the city, but Aroma stands out for their attention to detail. Their avocado toast is amazing, and the online ordering system makes my morning commute so much easier."</p>
+                </div>
+               
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://readdy.ai/api/search-image?query=Professional%20headshot%20of%20a%20young%20woman%20with%20blonde%20hair%20in%20a%20ponytail%2C%20smiling%20naturally%20at%20the%20camera%2C%20warm%20lighting%2C%20neutral%20background%2C%20high%20quality%20portrait&width=100&height=100&seq=person6&orientation=squarish" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-medium">Jennifer Wilson</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-secondary/80">"The pastries here are simply divine! Everything is clearly made with care and high-quality ingredients. I come here every weekend with my family, and we're always treated like old friends."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-primary/10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-4">Join Our Community</h2>
+                <p class="text-secondary/80 mb-8">Subscribe to our newsletter for exclusive offers, seasonal menu updates, and coffee brewing tips.</p>
+               
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-button border-none focus:ring-2 focus:ring-primary focus:outline-none">
+                    <button class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Subscribe</button>
+                </div>
+               
+                <p class="text-xs text-secondary/60 mt-4">By subscribing, you agree to receive marketing emails from us. You can unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#" class="logo text-3xl text-white mb-4 block">logo</a>
+                    <p class="text-white/70 mb-6">A cozy spot for coffee lovers and food enthusiasts, offering artisan coffee and freshly baked goods in a warm atmosphere.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+                            <i class="ri-facebook-fill"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-white/20 transition-colors">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                    </div>
+                </div>
+               
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Hours</h3>
+                    <ul class="space-y-2 text-white/70">
+                        <li class="flex justify-between">
+                            <span>Monday - Friday</span>
+                            <span>7:00 AM - 7:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Saturday</span>
+                            <span>8:00 AM - 8:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span>8:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+               
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-white/70">
+                        <li class="flex items-start">
+                            <span class="w-5 h-5 flex items-center justify-center mr-2 mt-1"><i class="ri-map-pin-line"></i></span>
+                            <span>123 Coffee Street, Brewville, CA 94123</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-5 h-5 flex items-center justify-center mr-2"><i class="ri-phone-line"></i></span>
+                            <span>(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="w-5 h-5 flex items-center justify-center mr-2"><i class="ri-mail-line"></i></span>
+                            <span>hello@aromacafe.com</span>
+                        </li>
+                    </ul>
+                </div>
+               
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Location</h3>
+                    <div class="h-40 bg-white/10 rounded-lg overflow-hidden relative">
+                        <img src="https://public.readdy.ai/gen_page/map_placeholder_1280x720.png" alt="Map" class="w-full h-full object-cover">
+                    </div>
+                    <a href="#" class="text-white/70 hover:text-white flex items-center mt-2 transition-colors">
+                        <span class="w-5 h-5 flex items-center justify-center mr-1"><i class="ri-directions-line"></i></span>
+                        <span>Get Directions</span>
+                    </a>
+                </div>
+            </div>
+           
+            <div class="border-t border-white/20 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-white/60 text-sm mb-4 md:mb-0">
+                    © 2025 Aroma Café. All rights reserved.
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center text-white/60">
+                        <span class="mr-2">We accept</span>
+                        <div class="flex space-x-2">
+                            <i class="ri-visa-fill ri-lg"></i>
+                            <i class="ri-mastercard-fill ri-lg"></i>
+                            <i class="ri-paypal-fill ri-lg"></i>
+                            <i class="ri-apple-fill ri-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script id="menuTabsScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuTabs = document.querySelectorAll('.menu-tab');
+           
+            menuTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    menuTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                   
+                    // Here you would normally filter menu items based on category
+                    const category = this.getAttribute('data-category');
+                    console.log(`Selected category: ${category}`);
+                });
+            });
+        });
+    </script>
+
+    <script id="orderTypeToggleScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderTypeToggle = document.getElementById('orderTypeToggle');
+            const pickupTimeContainer = document.getElementById('pickupTimeContainer');
+            const deliveryAddressContainer = document.getElementById('deliveryAddressContainer');
+           
+            orderTypeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    pickupTimeContainer.classList.add('hidden');
+                    deliveryAddressContainer.classList.remove('hidden');
+                } else {
+                    pickupTimeContainer.classList.remove('hidden');
+                    deliveryAddressContainer.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+    <script id="stickyHeaderScript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            const headerHeight = header.offsetHeight;
+           
+            function updateHeader() {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-md');
+                    header.classList.remove('shadow-sm');
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.classList.add('shadow-sm');
+                }
+            }
+           
+            window.addEventListener('scroll', updateHeader);
+            updateHeader();
+        });
+    </script>
+</body>
+</html>
